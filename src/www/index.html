@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+            <script type="text/javascript"src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+      <div class="container">
+      
+      <div>
+        <p>Sistema de visualización de los datos de acelerómetro y sensor de orientación absoluta en los tres ejes x, y, z. El sistema consiste de dos aplicaciones Web:</p>
+        <ol>
+          <li><a href="viz/index.html">viz/index.html</a> Aplicación para visualización de datos </a></li>
+           <li><a href="controller/index.html">controller/index.html</a> Aplicación para enviar los dátos desde un móvil</li>
+        </ol>
+        <p>Abrir la aplicación para enviar datos desde un teléfono móvil y tocar la pantalla para empezar a enviar datos de los sensores. Se puede utilizar un único dispositivo a la vez.</p>
+        <p>Recordad de hacer fork del proyecto para poder ejecutarlo desde vuestra cuenta de repl.it, o descargar el código para utilizarlo en local.</p>
+               
+      </div>
+        <div id="qrcode"></div>
+      </div>
+      <script>
+        const qrcode = new QRCode("qrcode", {
+  text: "https://sensors-viz.andreabellucci1.repl.co/controller/index.html",
+  width: 256,
+  height: 256,
+  colorDark: "#000000",
+  colorLight: "#ffffff",
+  correctLevel: QRCode.CorrectLevel.H
+});
+      </script>
+    </body>
+</html>
