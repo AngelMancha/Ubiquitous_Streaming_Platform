@@ -64,7 +64,8 @@ if ('AbsoluteOrientationSensor' in window) {
     absOrientation.onreading = (e) => {
       const quat = e.target.quaternion;
       const angles = toEulerRollPitchYaw(quat);
-      socket.emit("ORIENTATION_DATA", { roll: angles.roll, pitch: angles.pitch, yaw: angles.yaw});
+      console.log("Roll: ", angles.roll, "Yaw: ", angles.yaw);
+      socket.emit("ORIENTATION_DATA", { roll: angles.roll, yaw: angles.yaw});
     };
 
 
@@ -76,7 +77,7 @@ if ('AbsoluteOrientationSensor' in window) {
 function toEulerRollPitchYaw(q) {
   const sinr_cosp = 2 * (q[3] * q[0] - q[1] * q[2]);
   const cosr_cosp = 1 - 2 * (q[0] * q[0] + q[1] * q[1]);
-  const roll = Math.atan2(sinr_cosp, toEuler);
+  const roll = Math.atan2(sinr_cosp, cosr_cosp);
 
   const sinp = Math.sqrt(1 + 2 * (q[3] * q[1] - q[0] * q[2]));
   const cosp = Math.sqrt(1 - 2 * (q[3] * q[1] + q[0] * q[2]));
