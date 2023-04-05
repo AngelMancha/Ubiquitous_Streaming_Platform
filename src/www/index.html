@@ -2,23 +2,29 @@
     <head>
         <script type="text/javascript" src="/socket.io/socket.io.js"></script>
             <script type="text/javascript"src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
       <div class="container">
       
-      <div>
-        <p>Sistema de visualización de los datos de acelerómetro y sensor de orientación absoluta en los tres ejes x, y, z. El sistema consiste de dos aplicaciones Web:</p>
-        <ol>
-          <li><a href="viz/index.html">viz/index.html</a> Aplicación para visualización de datos </a></li>
-           <li><a href="controller/index.html">controller/index.html</a> Aplicación para enviar los dátos desde un móvil</li>
-        </ol>
-        <p>Abrir la aplicación para enviar datos desde un teléfono móvil y tocar la pantalla para empezar a enviar datos de los sensores. Se puede utilizar un único dispositivo a la vez.</p>
-        <p>Recordad de hacer fork del proyecto para poder ejecutarlo desde vuestra cuenta de repl.it, o descargar el código para utilizarlo en local.</p>
-               
+      <div class="left">
+        <h2>MovieBox</h2>
+      <h1>¡Bienvenido! Por favor seleccione qué tipo de dispositivo quieres. </h1>
+        <p>Si seleccionas <span style="color: #b47c56;">Reproductor</span> podrás reproducir el contenido que quieras.</p> 
+        <p>Si seleccionas <span style="color: #b47c56;">Controlador</span> podrás reproducir manipular el contenido que se reproduce.</p> 
+
       </div>
-        <div id="qrcode"></div>
+      <div class="right">
+        <ul>
+          <li><a href="viz/index.html">Reproductor</a></a></li>
+          <li><a href="controller/index.html">Controlador</a> </li>
+        </ul>
+      </div>
+      
+       
+      
       </div>
       
     </body>

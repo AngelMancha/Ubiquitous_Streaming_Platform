@@ -1,0 +1,109 @@
+body {
+    background: #1E1E1E;
+}
+
+h1 {
+    margin-left:20px;
+    font-size: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+
+}
+
+
+
+h2 {
+    margin: 0;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    align-self: center;
+    color: #b47c56;
+}
+
+
+.container {
+    display: flex;
+    height: 100%;
+}
+
+.left {
+    width: 50%;
+    display: flex; /* Crea otro contenedor flexible para el contenido */
+    flex-direction: column; /* Establece que el contenido esté en columna */
+    justify-content: center;
+    align-items: center;
+    color: #f6f6f7;
+    background-color: 262626;
+}
+
+
+
+.right {
+    width: 50%;
+    display: flex; /* Crea otro contenedor flexible para el contenido */
+    flex-direction: column; /* Establece que el contenido esté en columna */
+    justify-content: center;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Muestra los elementos en columnas */
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    height: auto; /* Establece la altura de la lista para ajustarse al contenido */
+}
+
+
+
+ul li {
+    margin: 0;
+    padding: 50px;
+    background-color: #b47c56;
+    text-align: center; /* Centra el contenido del elemento li */
+    margin-bottom: 10px;
+    border-radius: 30px;
+}
+
+ul li:hover {
+    background-color: #cea896;
+}
+  
+ul li a {
+    color: #f2f6f2;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px;
+}
+
+
+@media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+    .left, .right {
+      width: 100%;
+    }
+    ul {
+        margin-top: 30px;
+    }
+    h2 {
+        font-size: 20px;
+        margin-top: 10px;
+    }
+    p {
+        font-size: 15px;
+    }
+    h1 {
+        font-size: 35px;
+        margin-top: 10px;
+    }
+
+  }
