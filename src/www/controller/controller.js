@@ -11,14 +11,14 @@ async function toggleStart() {
     document.documentElement.requestFullscreen();
     await screen.orientation.lock("portrait");
     divElem.innerText = "Sending data \nTap again to stop";
-    divElem.style.backgroundColor = "#00ff00";
+    divElem.style.backgroundColor = "#262626";
     if (accelerometer) accelerometer.start();
     if (absOrientation) absOrientation.start();
   } else {
     await screen.orientation.unlock();
     document.exitFullscreen();
     divElem.innerText = "Tap to start";
-    divElem.style.backgroundColor = "#ff0000";
+    divElem.style.backgroundColor = "#262626";
     if (accelerometer) accelerometer.stop();
     if (absOrientation) absOrientation.stop();
 
