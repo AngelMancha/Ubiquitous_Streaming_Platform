@@ -3,8 +3,12 @@ const socket = io();
 let video = document.getElementById("video");
 var mensaje = document.getElementById("mensaje");
 
-var isPause = true;
 var cambio;
+var cambio_yaw;
+var forward = false;
+var backward = false;
+var isPause = true;
+
 
 socket.on("connect", function(){
   socket.emit("VIS_CONNECTED");
@@ -12,26 +16,26 @@ socket.on("connect", function(){
 
   socket.on("ORIENTATION_DATA", function(data){
     console.log("Roll: ", data.roll);
-      if (data.roll > 0.5 && isPause === false) { // movil colgado
-        console.log("PAUSAR VIDEO");
+    
+      if (data.roll > 0.3 && isPause === false ) { // movil colgado
+        
         video.pause();
-       // isPause = true;
         cambio = 1;
         mensaje.innerHTML="VIDEO PARADO";
-        console.log("ISPUASE DEL PAUSE", isPause);
+        
         
       }
-      if (data.roll > 0.5 && isPause === true) { // movil colgado
-        console.log("INICIAR VIDEO");
+      if (data.roll > 0.3 && isPause === true ) { // movil colgado
+       
         video.play();
         cambio = 2;
         mensaje.innerHTML="VIDEO INICIADO";
-        console.log("ISPUASE DEL PLAY", isPause);
+       
       }
 
       if (data.roll < 0) {
-        console.log("isPause: ", isPause);
-        
+       
+    
         if (cambio === 1) {
           isPause = true;
         }
@@ -40,13 +44,34 @@ socket.on("connect", function(){
         }
       }
       
+      
+     
+      if (data.yaw < 0.3 && forward === false) {
+        console.log("estoy ADELANTANDO el video");
 
-      /*
-      if (data.yaw < 0) {
         video.currentTime += 10;
+        forward = true;
+        cambio_yaw = 3;
       }
-     */
-     // console.log("visualizer:", "row:", data.roll, "pitch:", data.pitch, "yaw:", data.yaw);
+
+      if (data.yaw > 2 && backward === false) {
+        video.currentTime -= 10;
+        console.log("estoy ATRASAAANDOOOOO el video");
+        backward = true;
+        cambio_yaw = 4;
+      }
+
+      if ( data.yaw < 1.5 && data.yaw > 0.3){
+        if (cambio_yaw === 3){
+        forward = false;
+        }
+
+        if (cambio_yaw === 4) {
+          backward = false;
+        }
+      }
+    
+     console.log("visualizer:", "row:", data.roll, "pitch:", data.pitch, "yaw:", data.yaw);
       
       
   });

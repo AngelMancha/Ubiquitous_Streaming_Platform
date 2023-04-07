@@ -64,8 +64,8 @@ if ('AbsoluteOrientationSensor' in window) {
     absOrientation.onreading = (e) => {
       const quat = e.target.quaternion;
       const angles = toEulerRollPitchYaw(quat);
-      console.log("Roll: ", angles.roll, "Yaw: ", angles.yaw);
-      socket.emit("ORIENTATION_DATA", { roll: angles.roll, yaw: angles.yaw});
+      console.log("EL PITCH ES ", angles.pitch);
+      socket.emit("ORIENTATION_DATA", { roll: angles.roll, yaw: angles.yaw, pitch: angles.pitch});
     };
 
 
