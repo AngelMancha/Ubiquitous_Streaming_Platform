@@ -21,7 +21,7 @@ h2 {
     font-size: 30px;
     font-family: Arial, Helvetica, sans-serif;
     align-self: center;
-    color: #b47c56;
+    color: #c75a70;
 }
 
 
@@ -66,14 +66,14 @@ ul {
 ul li {
     margin: 0;
     padding: 50px;
-    background-color: #b47c56;
+    background-color: #c75a70;
     text-align: center; /* Centra el contenido del elemento li */
     margin-bottom: 10px;
     border-radius: 30px;
 }
 
 ul li:hover {
-    background-color: #cea896;
+    background-color: #d77c7a;
 }
   
 ul li a {

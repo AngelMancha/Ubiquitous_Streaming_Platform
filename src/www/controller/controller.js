@@ -8,15 +8,14 @@ async function toggleStart() {
   started = !started;
   const divElem = document.querySelector("#msg-container");
   if (started) {
-    document.documentElement.requestFullscreen();
-    await screen.orientation.lock("portrait");
+
     divElem.innerText = "Sending data \nTap again to stop";
     divElem.style.backgroundColor = "#262626";
     if (accelerometer) accelerometer.start();
     if (absOrientation) absOrientation.start();
   } else {
-    await screen.orientation.unlock();
-    document.exitFullscreen();
+    
+    
     divElem.innerText = "Tap to start";
     divElem.style.backgroundColor = "#262626";
     if (accelerometer) accelerometer.stop();
@@ -64,7 +63,7 @@ if ('AbsoluteOrientationSensor' in window) {
     absOrientation.onreading = (e) => {
       const quat = e.target.quaternion;
       const angles = toEulerRollPitchYaw(quat);
-      console.log("EL PITCH ES ", angles.pitch);
+      //console.log("EL PITCH ES ", angles.pitch);
       socket.emit("ORIENTATION_DATA", { roll: angles.roll, yaw: angles.yaw, pitch: angles.pitch});
     };
 
@@ -90,3 +89,25 @@ function toEulerRollPitchYaw(q) {
   return { roll, pitch, yaw };
 }
 
+
+
+socket.on("connect", function(){
+  socket.emit("CON_CONNECTED");
+  console.log('Conectado al servidor de PUTA');
+
+
+  // cuando el video en la página de "viz" se está reproduciendo
+  socket.on('play', function() {
+    const video = document.getElementById('video');
+    video.play();
+  });
+  
+
+  // cuando el video en la página de "viz" se detiene
+  socket.on('pause', function() {
+    const video = document.getElementById('video');
+    video.pause();
+  });
+  
+
+});

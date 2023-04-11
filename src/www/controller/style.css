@@ -8,13 +8,121 @@ html, body {
     margin: 0px;
   }
   
-  #msg-container{
-    width: 100%;
-    height: 100%;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: red;
-    font-size: 4em;
+#msg-container{
+
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d77c7a;
+  font-size: 4em;
+  
+}
+
+
+#buttons-container{
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/*botones modernos y grandes con letra Heveltica*/
+#buttons-container button{
+
+  background-color: #c75a70;
+  color: #f6f6f7;
+  font-family: Helvetica;
+  font-size: 10em;
+  border: none;
+  border-radius: 10px;
+  height: 250px;
+  width: 250px;
+  margin: 50px;
+  border-radius: 20%;
+}
+
+
+#video-container{
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#video{
+  width: 95%;
+  margin-top: 20%;
+  margin-bottom: 20%;
+  height: 90%;
+  
+  align-items: center;
+  justify-content: center;
+
+}
+
+/*boton input file igual que el resto de botones y esté en el centro*/
+#file-input{
+  background-color: #c75a70;
+  color: #f6f6f7;
+  font-family: Helvetica;
+  font-size: 2.5em;
+  border: none;
+  border-radius: 10px;
+  padding: 50px;
+  margin-left: 12%;
+  width: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 35%;
+  border-radius: 30px;
+ 
+}
+
+
+/*ventana modal*/
+#modal-container{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+#mensaje{
+  background-color: #1E1E1E;
+  padding: 100px;
+  font-size: 100px;
+  font-family: Helvetica;
+  color: #f6f6f7;
+  text-align: center;
+  justify-content: center;
+}
+
+@media (min-width: 1000px) {
+  #modal-container {
+    display: block;
   }
+
+  #file_input{
+    display: none;
+  }
+
+  #video{
+    display: none;
+  }
+
+  #video-container{
+    display: none;
+  }
+
+  #buttons-container{
+    display: none;
+  }
+}
+

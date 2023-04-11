@@ -15,7 +15,7 @@ socket.on("connect", function(){
   
 
   socket.on("ORIENTATION_DATA", function(data){
-    console.log("Roll: ", data.roll);
+    //console.log("Roll: ", data.roll);
     
       if (data.roll > 0.3 && isPause === false ) { // movil colgado
         
@@ -47,16 +47,16 @@ socket.on("connect", function(){
       
      
       if (data.yaw < 0.3 && forward === false) {
-        console.log("estoy ADELANTANDO el video");
+        //console.log("estoy ADELANTANDO el video");
 
-        video.currentTime += 10;
+        //video.currentTime += 10;
         forward = true;
         cambio_yaw = 3;
       }
 
       if (data.yaw > 2 && backward === false) {
-        video.currentTime -= 10;
-        console.log("estoy ATRASAAANDOOOOO el video");
+        //video.currentTime -= 10;
+        //console.log("estoy ATRASAAANDOOOOO el video");
         backward = true;
         cambio_yaw = 4;
       }
@@ -71,8 +71,29 @@ socket.on("connect", function(){
         }
       }
     
-     console.log("visualizer:", "row:", data.roll, "pitch:", data.pitch, "yaw:", data.yaw);
+     //console.log("visualizer:", "row:", data.roll, "pitch:", data.pitch, "yaw:", data.yaw);
       
       
   });
 })
+
+
+
+    // cuando el video comienza a reproducirse
+    video.addEventListener('play', function () {
+      console.log('El video comenzó a reproducirse');
+      // emitir un evento "play" a través del socket
+      socket.emit('play');
+    });
+  
+    // cuando el video se detiene
+    video.addEventListener('pause', function () {
+      console.log('El video se detuvo');
+      // emitir un evento "pause" a través del socket
+      socket.emit('pause');
+    });
+
+
+
+
+    

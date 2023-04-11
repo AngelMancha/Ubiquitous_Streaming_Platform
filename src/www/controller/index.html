@@ -2,9 +2,40 @@
     <head>
         <script type="text/javascript" src="/socket.io/socket.io.js"></script>
         <link rel="stylesheet" href="style.css">
+        
     </head>
     <body>
-      <div id="msg-container">Tap to start</div>
+
+     
+    <!-- botones -->
+      <div id = "buttons-container">
+        <!-- botón de ajustes con icono -->
+        <button class="buttons" onclick="openSettings()"><img src="../media/settings.png" alt="settings" height="150" ></button> 
+        
+
+        <!-- botón de ayuda -->
+        <button class="buttons" onclick="openHelp()"><img src="../media/help_white.png" alt="settings" width="100" ></button> 
+
+     </div>
+
+
+    <!-- video -->
+     <div id = "video-container">
+      <video id= "video" src="../media/matrix.mp4" controls></video>
+    </div>
+
+     <!-- ventana modal -->
+    <div id="modal-container">
+      <div id = mensaje> 
+        <p>POR FAVOR, CAMBIA DE DISPOSITIVO</p>
+      </div>
+    </div>
+  
+ 
+
+    <!-- explorador de archivos-->
+    <input  type="file" id="file-input" accept="video/*" onchange="loadFile(event)">
+    <div id="msg-container">Tap to start</div>
         <script type="text/javascript" src="controller.js"></script>
     </body>
 </html>
