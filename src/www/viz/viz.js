@@ -9,6 +9,17 @@ var forward = false;
 var backward = false;
 var isPause = true;
 
+// Crear un evento personalizado
+let adelanto = new CustomEvent('adelanto', {
+  bubbles: true, // Indicar si el evento se propaga en la fase de burbujeo
+  cancelable: true, // Indicar si el evento se puede cancelar
+  detail: {}
+});
+let retraso = new CustomEvent('retraso', {
+  bubbles: true,
+  cancelable: true,
+  detail: {}
+});
 
 socket.on("connect", function(){
   socket.emit("VIS_CONNECTED");
@@ -49,13 +60,15 @@ socket.on("connect", function(){
       if (data.yaw < 0.3 && forward === false) {
         //console.log("estoy ADELANTANDO el video");
 
-        //video.currentTime += 10;
+        video.currentTime += 10;
+        video.dispatchEvent(adelanto);
         forward = true;
         cambio_yaw = 3;
       }
 
       if (data.yaw > 2 && backward === false) {
-        //video.currentTime -= 10;
+        video.currentTime -= 10;
+        video.dispatchEvent(retraso);
         //console.log("estoy ATRASAAANDOOOOO el video");
         backward = true;
         cambio_yaw = 4;
@@ -79,6 +92,7 @@ socket.on("connect", function(){
 
 
 
+
     // cuando el video comienza a reproducirse
     video.addEventListener('play', function () {
       console.log('El video comenzó a reproducirse');
@@ -93,7 +107,43 @@ socket.on("connect", function(){
       socket.emit('pause');
     });
 
+    video.addEventListener('adelanto', function () {
+      console.log('El video se ha adelantado');
+      // emitir un evento "pause" a través del socket
+      socket.emit('adelanto');
+    });
+
+    video.addEventListener('retraso', function () {
+      console.log('El video se ha retrasado');
+      // emitir un evento "pause" a través del socket
+      socket.emit('retraso');
+    });
 
 
 
-    
+
+    /*
+var lastTime = video.currentTime;
+    // cuando el video se actualiza en tiempo real
+    video.addEventListener('timeupdate', function() {
+
+      // obtener la posición actual del video en segundos
+      var currentTime = video.currentTime;
+
+      // determinar si el usuario adelantó o retrocedió el video
+      if (currentTime > lastTime) {
+        console.log('El usuario adelantó el video');
+        // emitir un evento "forward" a través del socket
+        socket.emit('forward', { currentTime: currentTime });
+      } else if (currentTime < lastTime) {
+        console.log('El usuario retrocedió el video');
+        // emitir un evento "backward" a través del socket
+        socket.emit('backward', { currentTime: currentTime });
+      }
+
+      // actualizar la última posición del video
+      lastTime = currentTime;
+    });
+
+*/
+      

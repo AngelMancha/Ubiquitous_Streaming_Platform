@@ -4,6 +4,13 @@ let started = false;
 let accelerometer;
 let absOrientation;
 
+function switchMode(mode) {
+  var filename = "";
+  if (mode == 1) filename = "touchIndex.html";
+  if (mode == 2) filename = "index.html"
+  window.location.href = filename;
+}
+
 async function toggleStart() {
   started = !started;
   const divElem = document.querySelector("#msg-container");
@@ -40,6 +47,7 @@ if ('Accelerometer' in window) {
     };
     accelerometer.onreading = (e) => {
       socket.emit("ACC_DATA", { x: accelerometer.x, y: accelerometer.y, z: accelerometer.z });
+      
     };
 
 
@@ -65,6 +73,7 @@ if ('AbsoluteOrientationSensor' in window) {
       const angles = toEulerRollPitchYaw(quat);
       //console.log("EL PITCH ES ", angles.pitch);
       socket.emit("ORIENTATION_DATA", { roll: angles.roll, yaw: angles.yaw, pitch: angles.pitch});
+      
     };
 
 
@@ -93,12 +102,13 @@ function toEulerRollPitchYaw(q) {
 
 socket.on("connect", function(){
   socket.emit("CON_CONNECTED");
-  console.log('Conectado al servidor de PUTA');
+  console.log('Conectado al servidor de PUTAuwu');
 
 
   // cuando el video en la página de "viz" se está reproduciendo
   socket.on('play', function() {
     const video = document.getElementById('video');
+    console.log("play");
     video.play();
   });
   
@@ -106,8 +116,85 @@ socket.on("connect", function(){
   // cuando el video en la página de "viz" se detiene
   socket.on('pause', function() {
     const video = document.getElementById('video');
+    console.log("pause");
     video.pause();
   });
   
-
+  socket.on('adelanto', function() {
+    const video = document.getElementById('video');
+    video.currentTime +=10;
+    console.log("adelanto");
+  });
+  
+  socket.on('retraso', function() {
+    const video = document.getElementById('video');
+    video.currentTime -= 10;
+    console.log("retraso");
+  });
 });
+/*
+
+var cambio;
+var cambio_yaw;
+var forward = false;
+var backward = false;
+var isPause = true;
+
+const video = document.getElementById('video');
+function play(data) {
+if (data.roll > 0.3 && isPause === false ) { // movil colgado
+        
+  video.pause();
+  cambio = 1;
+  mensaje.innerHTML="VIDEO PARADO";
+  
+  
+}
+if (data.roll > 0.3 && isPause === true ) { // movil colgado
+ 
+  video.play();
+  cambio = 2;
+  mensaje.innerHTML="VIDEO INICIADO";
+ 
+}
+
+if (data.roll < 0) {
+ 
+
+  if (cambio === 1) {
+    isPause = true;
+  }
+  if (cambio === 2) {
+    isPause = false;
+  }
+}
+
+
+
+if (data.yaw < 0.3 && forward === false) {
+  console.log("estoy ADELANTANDO el video");
+
+  video.currentTime += 10;
+  forward = true;
+  cambio_yaw = 3;
+}
+
+if (data.yaw > 2 && backward === false) {
+  video.currentTime -= 10;
+  console.log("estoy ATRASAAANDOOOOO el video");
+  backward = true;
+  cambio_yaw = 4;
+}
+
+if ( data.yaw < 1.5 && data.yaw > 0.3){
+  if (cambio_yaw === 3){
+  forward = false;
+  }
+
+  if (cambio_yaw === 4) {
+    backward = false;
+  }
+}
+
+//console.log("visualizer:", "row:", data.roll, "pitch:", data.pitch, "yaw:", data.yaw);
+};*/

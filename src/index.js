@@ -29,6 +29,17 @@ io.on('connection', (socket) => {
     if (conSocket) conSocket.emit("pause", data);
     console.log("SE HA ENVIADO PAUSE")
   });
+
+  socket.on("adelanto", (data) => {
+    if (conSocket) conSocket.emit("adelanto", data);
+    console.log("SE HA ENVIADO FORWARD");
+  });
+
+  socket.on("retraso", (data) => {
+    if (conSocket) conSocket.emit("retraso", data);
+    console.log("SE HA ENVIADO BACKWARD");
+  });
+
   socket.on("ACC_DATA", (data) => {
     if (visSocket) visSocket.emit("ACC_DATA", data);
   });
@@ -36,11 +47,8 @@ io.on('connection', (socket) => {
   socket.on("ORIENTATION_DATA", (data) => {
     if (visSocket) visSocket.emit("ORIENTATION_DATA", data);
   });
-  
 });
 
 server.listen(3000, () => {
   console.log("Server listening...");
 });
-
-
