@@ -13,7 +13,7 @@
         <button class="buttons" onclick="openSettings()"><img src="../media/settings.png" alt="settings"  ></button> 
         
         <!-- cambiar gestos -> touch -->>
-        <button class="buttons" onclick="switchMode(1)"><img src="../media/tactil.png" alt="settings"  ></button>
+        <button id="touch" class="buttons" ><img src="../media/tactil.png" alt="settings"  ></button>
 
         <!-- botón de ayuda -->
         <button class="buttons" onclick="openHelp()"><img src="../media/help_black.png" alt="settings"  ></button> 
@@ -39,8 +39,8 @@
 
     <!-- explorador de archivos-->
     <input type="file" id="file-input" accept="video/*" onchange="loadFile(event)" >
-    
-    <div id="msg-container">Tap to start</div>
+    <button id="msg-container" class="buttons" onclick="toggleStart()">Tap To Start</button>
+   
         <script type="text/javascript" src="controller.js"></script>
     </body>
 </html>

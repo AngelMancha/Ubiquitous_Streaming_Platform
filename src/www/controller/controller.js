@@ -1,19 +1,18 @@
 const socket = io();
 
 let started = false;
+let touch = false;
 let accelerometer;
 let absOrientation;
 
-function switchMode(mode) {
-  var filename = "";
-  if (mode == 1) filename = "touchIndex.html";
-  if (mode == 2) filename = "index.html"
-  window.location.href = filename;
-}
+
+const divElem = document.getElementById("msg-container");
+
+console.log("started:", started);
 
 async function toggleStart() {
   started = !started;
-  const divElem = document.querySelector("#msg-container");
+  console.log("funcion started:", started);
   if (started) {
 
     divElem.innerText = "Sending data \nTap again to stop";
@@ -22,8 +21,7 @@ async function toggleStart() {
     if (absOrientation) absOrientation.start();
   } else {
     
-    
-    divElem.innerText = "Tap to start";
+    divElem.innerText = "Tap to Start";
     divElem.style.backgroundColor = "#262626";
     if (accelerometer) accelerometer.stop();
     if (absOrientation) absOrientation.stop();
@@ -31,39 +29,30 @@ async function toggleStart() {
   }
 }
 
-document.body.addEventListener("click", toggleStart);
 
+async function touchStart() {
+  touch = !touch;
+  const divElem = document.querySelector("#touch");
+  if (touch) {
 
-if ('Accelerometer' in window) {
-  try {
-    accelerometer = new Accelerometer({ frequency: 10 });
-    accelerometer.onerror = (event) => {
-      // Errores en tiempo de ejecución
-      if (event.error.name === 'NotAllowedError') {
-        alert('Permission to access sensor was denied.');
-      } else if (event.error.name === 'NotReadableError') {
-        alert('Cannot connect to the sensor.');
-      }
-    };
-    accelerometer.onreading = (e) => {
-      socket.emit("ACC_DATA", { x: accelerometer.x, y: accelerometer.y, z: accelerometer.z });
-      
-    };
-
-
-  } catch (error) {
-    // Error en la creación del objeto
-    if (error.name === 'SecurityError') {
-      alert('Sensor construction was blocked by the Permissions Policy.');
-    } else if (error.name === 'ReferenceError') {
-      alert('Sensor is not supported by the User Agent.');
-    } else {
-      throw error;
-    }
+   // divElem.innerText = "Tap to start";
+    divElem.style.backgroundColor = "#262626";
+    if (accelerometer) accelerometer.stop();
+    if (absOrientation) absOrientation.stop();
+    console.log("ESTAMOS EN TOUCH");
+  } else {
+   // divElem.innerText = "Sending data \nTap again to stop";
+   // divElem.style.backgroundColor = "#262626";
+    if (accelerometer) accelerometer.start();
+    if (absOrientation) absOrientation.start();
+    console.log("ESTAMOS EN GESTO");
   }
 }
 
+//.addEventListener("click", toggleStart());
 
+if (touch === false) {
+// Si detecta movimiento
 if ('AbsoluteOrientationSensor' in window) {
   try {
     absOrientation = new AbsoluteOrientationSensor({ frequency: 10 });
@@ -80,6 +69,7 @@ if ('AbsoluteOrientationSensor' in window) {
   } catch (err) {
     console.log(err);
   }
+}
 }
 
 function toEulerRollPitchYaw(q) {
@@ -102,7 +92,7 @@ function toEulerRollPitchYaw(q) {
 
 socket.on("connect", function(){
   socket.emit("CON_CONNECTED");
-  console.log('Conectado al servidor de PUTAuwu');
+  console.log('Conectado al servidor');
 
 
   // cuando el video en la página de "viz" se está reproduciendo
@@ -132,69 +122,3 @@ socket.on("connect", function(){
     console.log("retraso");
   });
 });
-/*
-
-var cambio;
-var cambio_yaw;
-var forward = false;
-var backward = false;
-var isPause = true;
-
-const video = document.getElementById('video');
-function play(data) {
-if (data.roll > 0.3 && isPause === false ) { // movil colgado
-        
-  video.pause();
-  cambio = 1;
-  mensaje.innerHTML="VIDEO PARADO";
-  
-  
-}
-if (data.roll > 0.3 && isPause === true ) { // movil colgado
- 
-  video.play();
-  cambio = 2;
-  mensaje.innerHTML="VIDEO INICIADO";
- 
-}
-
-if (data.roll < 0) {
- 
-
-  if (cambio === 1) {
-    isPause = true;
-  }
-  if (cambio === 2) {
-    isPause = false;
-  }
-}
-
-
-
-if (data.yaw < 0.3 && forward === false) {
-  console.log("estoy ADELANTANDO el video");
-
-  video.currentTime += 10;
-  forward = true;
-  cambio_yaw = 3;
-}
-
-if (data.yaw > 2 && backward === false) {
-  video.currentTime -= 10;
-  console.log("estoy ATRASAAANDOOOOO el video");
-  backward = true;
-  cambio_yaw = 4;
-}
-
-if ( data.yaw < 1.5 && data.yaw > 0.3){
-  if (cambio_yaw === 3){
-  forward = false;
-  }
-
-  if (cambio_yaw === 4) {
-    backward = false;
-  }
-}
-
-//console.log("visualizer:", "row:", data.roll, "pitch:", data.pitch, "yaw:", data.yaw);
-};*/
