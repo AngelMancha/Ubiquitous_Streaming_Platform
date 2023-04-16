@@ -23,8 +23,8 @@ let retraso = new CustomEvent('retraso', {
 
 socket.on("connect", function(){
   socket.emit("VIS_CONNECTED");
-  
 
+  
   socket.on("ORIENTATION_DATA", function(data){
     //console.log("Roll: ", data.roll);
     
@@ -83,12 +83,34 @@ socket.on("connect", function(){
           backward = false;
         }
       }
-    
-     //console.log("visualizer:", "row:", data.roll, "pitch:", data.pitch, "yaw:", data.yaw);
+      
+      //console.log("visualizer:", "row:", data.roll, "pitch:", data.pitch, "yaw:", data.yaw);
       
       
   });
-})
+
+
+    socket.on('play_touch', function() {
+      video.play();
+      console.log("PLAY VIS");
+    });
+
+    socket.on('pause_touch', function() {
+      video.pause();
+      console.log("PAUSE VIS");
+    });
+
+    socket.on('adelanto_touch', function() {
+      video.currentTime += 10;
+      console.log("ADELANTO VIS");
+    });
+
+    socket.on('retraso_touch', function() {
+      video.currentTime -= 10;
+      console.log("RETRASO VIS");
+    });
+
+});
 
 
 

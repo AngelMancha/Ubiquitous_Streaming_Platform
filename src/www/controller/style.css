@@ -22,7 +22,7 @@ html, body {
 }
 
 
-#buttons-container{
+#buttons-container, #buttons-container-touch {
   margin: auto;
   display: flex;
   align-items: center;
@@ -39,10 +39,23 @@ html, body {
   border: none;
   border-radius: 10px;
   margin: 50px;
+  border-radius: 50px;
   
   
 }
 
+#buttons-container-touch button{
+  background-color: #c75a70;
+  color: #f6f6f7;
+  font-family: Helvetica;
+  font-size: 10em;
+  border: none;
+  border-radius: 10px;
+  margin: 50px;
+  padding: 30px;
+  margin-bottom: 150px;
+  border-radius: 50px;
+}
 
 #video-container{
   margin: auto;
