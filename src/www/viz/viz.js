@@ -102,11 +102,13 @@ socket.on("connect", function(){
 
     socket.on('adelanto_touch', function() {
       video.currentTime += 10;
+      video.dispatchEvent(adelanto);
       console.log("ADELANTO VIS");
     });
 
     socket.on('retraso_touch', function() {
       video.currentTime -= 10;
+      video.dispatchEvent(retraso);
       console.log("RETRASO VIS");
     });
 
