@@ -4,3 +4,26 @@ body {
     background: #1E1E1E;
     margin: 0px;
 }
+
+#notas {
+    background-color: #1E1E1E;
+    color: white;
+    flex-basis:15%;
+    font-size: 30px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.li {
+    border-color: white;
+}
+/*video en el centro*/
+#video_container{
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#video {
+    flex-basis: 85%;
+}
+

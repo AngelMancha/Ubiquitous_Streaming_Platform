@@ -126,46 +126,49 @@ socket.on("connect", function(){
 });
 
 // TOUCH PARA NOTAS
-
 const distanciaUmbral = 20; // 20 pixels, equivalente a aproximadamente 2 cm
 let posicionesIniciales = [];
 let movimientoDetectado = false;
 
 // detectar tres touch 
-  document.addEventListener('touchstart', function(event) {
-    movimientoDetectado = false;
-    // guardamos posiciones iniciales de los touch
-    posicionesIniciales = Array.from(event.touches).map(touch => ({ x: touch.clientX, y: touch.clientY }));
-  });
+// detectar tres touch 
+document.addEventListener('touchstart', function(event) {
+  movimientoDetectado = false;
+  // guardamos posiciones iniciales de los touch
+  posicionesIniciales = Array.from(event.touches).map(touch => ({ x: touch.clientX, y: touch.clientY }));
+  console.log("1 toque detectado");
+});
 
 // si se mueven los tres dedos, comprobar que se mueva la distancia umbral
-  document.addEventListener('touchmove', function(event) {
-    if (event.touches.length === 3) {
-      const posicionesActuales = Array.from(event.touches).map(touch => ({ x: touch.clientX, y: touch.clientY }));
-      const distanciasRecorridas = posicionesActuales.map((posicionActual, i) => {
-        const posicionInicial = posicionesIniciales[i];
-        return Math.sqrt(Math.pow(posicionActual.x - posicionInicial.x, 2) + Math.pow(posicionActual.y - posicionInicial.y, 2));
-      console.log("tres toques detectados en movimiento");
-      });
+document.addEventListener('touchmove', function(event) {
+  if (event.touches.length === 3) {
+    console.log("3 TOQUES DECTADOS");
+    const posicionesActuales = Array.from(event.touches).map(touch => ({ x: touch.clientX, y: touch.clientY }));
+    const distanciasRecorridas = posicionesActuales.map((posicionActual, i) => {
+      const posicionInicial = posicionesIniciales[i];
+      return Math.sqrt(Math.pow(posicionActual.x - posicionInicial.x, 2) + Math.pow(posicionActual.y - posicionInicial.y, 2));
+    });
+    const todasDistanciasMayoresUmbral = distanciasRecorridas.every(distanciaRecorrida => distanciaRecorrida > distanciaUmbral);
+    if (todasDistanciasMayoresUmbral && !movimientoDetectado) {
+      // se han detectado tres toques
+      movimientoDetectado = true;
+      socket.emit("NOTA_ANADIDA");
     }
-
-      if (distanciasRecorridas.some(distancia => distancia > distanciaUmbral)) {
-        movimientoDetectado = true;
-      }
-
-
-  });
+  }
+});
   
-  // Escucha eventos de finalización del toque en el elemento que desees
-  document.addEventListener('touchend', function(event) {
-    // Ejecuta el callback si se detecta el movimiento de los tres dedos a la vez
-    if (movimientoDetectado) {
-      console.log("nota añadida");
-    }
-  });
+// Escucha eventos de finalización del toque en el elemento que desees
+document.addEventListener('touchend', function() {
+  // Ejecuta el callback si se detecta el movimiento de los tres dedos a la vez
+  if (movimientoDetectado) {
+    console.log("nota añadida");
+    
+  }
+});
 
-
-
+function anadirnota(){
+  console.log ("EN EL VIZ NOTA NUEVA");
+}
   function writeViewPort() {
     var ua = navigator.userAgent;
     var viewportChanged = false;

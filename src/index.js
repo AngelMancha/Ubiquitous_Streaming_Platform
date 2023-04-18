@@ -69,6 +69,10 @@ io.on('connection', (socket) => {
     if (visSocket) visSocket.emit("ACC_DATA", data);
   });
 
+  // Añadir nota
+  socket.on("NOTA_ANADIDA", (data) => {
+    if (visSocket) visSocket.emit("NOTA_ANADIDA", data);
+  });
   socket.on("ORIENTATION_DATA", (data) => {
     if (visSocket) visSocket.emit("ORIENTATION_DATA", data);
   });

@@ -2,6 +2,7 @@ const socket = io();
 
 let video = document.getElementById("video");
 var mensaje = document.getElementById("mensaje");
+const listaNotas = document.getElementById("lista-notas");
 
 var cambio;
 var cambio_yaw;
@@ -111,8 +112,25 @@ socket.on("connect", function(){
       video.dispatchEvent(retraso);
       console.log("RETRASO VIS");
     });
+    socket.on('NOTA_ANADIDA', function() {
+      console.log ("EN EL VIZ NOTA NUEVA");
+      let newItem = document.createElement("li");
+      let convertedTime = convertTime(video.currentTime);
+      newItem.textContent = "Nota en: " + convertedTime;
+      listaNotas.appendChild(newItem);
+      printList ();
+    });
 
 });
+
+function convertTime(segundos) {
+  let minutos = Math.floor(segundos / 60);
+  let segundosRestantes = segundos % 60;
+  let cerosMinutos = (minutos < 10 ? "0" : "");
+  let cerosSegundos = (segundosRestantes < 10 ? "0" : "");
+
+  return cerosMinutos + minutos + ":" + cerosSegundos + segundosRestantes.toFixed(0);
+}
 
 
 
@@ -146,11 +164,21 @@ socket.on("connect", function(){
 
 
 
+function printList() {;
+    let items = listaNotas.getElementsByTagName("li");
+    for (let i = 0; i < items.length; i++) {
+      console.log(items[i].textContent);
+    }
+}
+
+
     /*
 var lastTime = video.currentTime;
     // cuando el video se actualiza en tiempo real
     video.addEventListener('timeupdate', function() {
-
+function anadirnota(){
+  console.log ("EN EL VIZ NOTA NUEVA");
+}
       // obtener la posición actual del video en segundos
       var currentTime = video.currentTime;
 
@@ -170,4 +198,3 @@ var lastTime = video.currentTime;
     });
 
 */
-      
