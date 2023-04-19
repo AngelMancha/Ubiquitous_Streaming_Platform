@@ -18,7 +18,7 @@ body {
 /*video en el centro*/
 #video_container{
   margin: auto;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
 }
@@ -27,3 +27,13 @@ body {
     flex-basis: 85%;
 }
 
+
+#gallery{
+    display:flex;
+    flex-wrap: wrap;
+}
+
+#gallery video{
+    width: 500px;
+    padding: 50px;
+}

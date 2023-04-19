@@ -198,3 +198,21 @@ function anadirnota(){
     });
 
 */
+
+
+
+let gallery = document.getElementById("gallery"); 
+let video_container = document.getElementById("video_container");
+const videos = document.querySelectorAll("#gallery video"); 
+let clickedVideoSrc;
+videos.forEach(video_gallery => { 
+  video_gallery.addEventListener("click", () => {
+    clickedVideoSrc = video_gallery.getAttribute("src"); 
+   
+    video.setAttribute("src", clickedVideoSrc);
+    socket.emit("VIDEO_SELECTED", { src: clickedVideoSrc }); 
+    gallery.style.display = "none";
+    video_container.style.display = "flex";
+    
+  });
+});

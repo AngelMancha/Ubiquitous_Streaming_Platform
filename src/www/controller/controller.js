@@ -107,6 +107,10 @@ retraso.addEventListener("click", function() {
 socket.on("connect", function(){
   socket.emit("CON_CONNECTED");
   console.log('Conectado al servidor');
+  
+  socket.on("VIDEO_SELECTED", function(data){
+    video.src = data.src;
+  });
   // cuando el video en la página de "viz" se está reproduciendo
   socket.on('play', function() {
     video.play();

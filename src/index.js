@@ -76,6 +76,11 @@ io.on('connection', (socket) => {
   socket.on("ORIENTATION_DATA", (data) => {
     if (visSocket) visSocket.emit("ORIENTATION_DATA", data);
   });
+
+  //Seleccionar video
+  socket.on("VIDEO_SELECTED", (data) => {
+    if (conSocket) conSocket.emit("VIDEO_SELECTED", data);
+  });
 });
 
 server.listen(3000, () => {
