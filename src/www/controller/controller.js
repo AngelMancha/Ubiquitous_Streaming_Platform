@@ -6,11 +6,14 @@ let accelerometer;
 let absOrientation;
 
 const video = document.getElementById('video');
-const divElem = document.getElementById("touch");
+const divElem = document.getElementById("touch-img");
 let buttons_touch = document.getElementById("buttons-container-touch");
 const play_pause = document.getElementById("play-pause");
 const retraso = document.getElementById("retraso");
 const adelanto = document.getElementById("adelanto");
+const video_container = document.getElementById("video-container");
+
+
 
 console.log("started:", started);
 
@@ -20,19 +23,17 @@ window.addEventListener('gesturestart', function(event) {
 });
 
 
+
 async function toggleStart() {
   started = !started;
   console.log("funcion started:", started);
   if (started) {
-
-    divElem.innerText = "g";
-    divElem.style.backgroundColor = "#262626";
+    divElem.src = "../media/gesto.png";
     if (accelerometer) accelerometer.start();
     if (absOrientation) absOrientation.start();
     buttons_touch.style.display = "none";
   } else {
-    divElem.innerText = "T";
-    divElem.style.backgroundColor = "#262626";
+    divElem.src = "../media/tactil.png";
     if (accelerometer) accelerometer.stop();
     if (absOrientation) absOrientation.stop();
     buttons_touch.style.display = "block";
@@ -111,6 +112,7 @@ socket.on("connect", function(){
   
   socket.on("VIDEO_SELECTED", function(data){
     video.src = data.src;
+    video.style.display = "block";
   });
   // cuando el video en la página de "viz" se está reproduciendo
   socket.on('play', function() {
@@ -174,42 +176,44 @@ document.addEventListener('touchend', function() {
 function anadirnota(){
   console.log ("EN EL VIZ NOTA NUEVA");
 }
-  function writeViewPort() {
-    var ua = navigator.userAgent;
-    var viewportChanged = false;
-    var scale = 0;
 
-    if (ua.indexOf("Android") >= 0 && ua.indexOf("AppleWebKit") >= 0) {
-        var webkitVersion = parseFloat(ua.slice(ua.indexOf("AppleWebKit") + 12));
-        // targets android browser, not chrome browser (http://jimbergman.net/webkit-version-in-android-version/)
-        if (webkitVersion < 535) {
-            viewportChanged = true;
-            scale = getScaleWithScreenwidth();
-            document.write('<meta name="viewport" content="width=640, initial-scale=' + scale + ', minimum-scale=' + scale + ', maximum-scale=' + scale + '" />');
-        }
-    }
+// Función para prevenir zoom
+function writeViewPort() {
+  var ua = navigator.userAgent;
+  var viewportChanged = false;
+  var scale = 0;
 
-    if (ua.indexOf("Firefox") >= 0) {
-        viewportChanged = true;
-        scale = (getScaleWithScreenwidth() / 2);
-        document.write('<meta name="viewport" content="width=640, user-scalable=false, initial-scale=' + scale + '" />');
-    }
+  if (ua.indexOf("Android") >= 0 && ua.indexOf("AppleWebKit") >= 0) {
+      var webkitVersion = parseFloat(ua.slice(ua.indexOf("AppleWebKit") + 12));
+      // targets android browser, not chrome browser (http://jimbergman.net/webkit-version-in-android-version/)
+      if (webkitVersion < 535) {
+          viewportChanged = true;
+          scale = getScaleWithScreenwidth();
+          document.write('<meta name="viewport" content="width=600, initial-scale=' + scale + ', minimum-scale=' + scale + ', maximum-scale=' + scale + '" />');
+      }
+  }
 
-    if (!viewportChanged) {
-        document.write('<meta name="viewport" content="width=640, user-scalable=false" />');
-    }
+  if (ua.indexOf("Firefox") >= 0) {
+      viewportChanged = true;
+      scale = (getScaleWithScreenwidth() / 2);
+      document.write('<meta name="viewport" content="width=600, user-scalable=false, initial-scale=' + scale + '" />');
+  }
 
-    if (ua.indexOf("IEMobile") >= 0) {
-        document.write('<meta name="MobileOptimized" content="640" />');
-    }
+  if (!viewportChanged) {
+      document.write('<meta name="viewport" content="width=600, user-scalable=false" />');
+  }
 
-    document.write('<meta name="HandheldFriendly" content="true"/>');
+  if (ua.indexOf("IEMobile") >= 0) {
+      document.write('<meta name="MobileOptimized" content="600" />');
+  }
+
+  document.write('<meta name="HandheldFriendly" content="true"/>');
 }
 
 function getScaleWithScreenwidth() {
-    var viewportWidth = 640;
-    var screenWidth = window.innerWidth;
-    return (screenWidth / viewportWidth);
+  var viewportWidth = 600;
+  var screenWidth = window.innerWidth;
+  return (screenWidth / viewportWidth);
 }
 
 writeViewPort();
