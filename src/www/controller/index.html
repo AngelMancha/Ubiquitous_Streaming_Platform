@@ -3,7 +3,7 @@
         <script type="text/javascript" src="/socket.io/socket.io.js"></script>
         <link rel="stylesheet" href="style.css">
         <script src="https://kit.fontawesome.com/95a921107d.js" crossorigin="anonymous"></script>
-       <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale = 10.0, user-scalable=no">-->
+
     </head>
     <body>
 
@@ -13,29 +13,30 @@
         <!-- botón de ajustes con icono -->
         <button class="buttons" onclick="openSettings()"><img src="../media/settings.png" alt="settings"  ></button> 
         
-        <!-- cambiar gestos -> touch -->>
-        <button id="touch" class="buttons" onclick="toggleStart()"><img src="../media/tactil.png" alt="settings"  ></button>
+        <!-- cambiar gestos -> touch -->
+        <button id="touch" class="buttons" onclick="toggleStart()"><img id="touch-img" src="../media/gesto.png" alt="settings"></button>
 
         <!-- botón de ayuda -->
-        <button class="buttons" onclick="openHelp()"><img src="../media/help_black.png" alt="settings"  ></button> 
+        <button class="buttons" onclick="openHelp()"><img src="../media/question.png" alt="settings"  ></button> 
 
      </div>
 
 
     <!-- video -->
+
     <div id = "video-container">
       <video id= "video" src="" controls></video>
     </div>
     
     <div id = "buttons-container-touch">
       <!-- botón de ajustes con icono -->
-      <button id="retraso" class="buttons"><img src="../media/settings.png" alt="settings" width=" 50px" ></button> 
+      <button id="retraso" class="buttons"><img src="../media/backard-removebg-preview.png" alt="settings" width=" 50px" ></button> 
       
-      <!-- cambiar gestos -> touch -->>
-      <button id="play-pause" class="buttons"><img src="../media/settings.png" alt="settings" width=" 50px" ></button>
+      <!-- cambiar gestos -> touch -->
+      <button id="play-pause" class="buttons"><img src="../media/playy-removebg-preview.png" alt="settings" width=" 50px" ></button>
 
       <!-- botón de ayuda -->
-      <button id="adelanto" class="buttons" ><img src="../media/settings.png" alt="settings" width=" 50px" ></button> 
+      <button id="adelanto" class="buttons" ><img src="../media/forward-removebg-preview.png" alt="settings" width=" 50px" ></button> 
 
    </div>
      <!-- ventana modal -->
@@ -46,13 +47,7 @@
         </div>
       </div>
     </div>
-  
- 
 
-    <!-- explorador de archivos-->
-    <div id = explorador>
-      <button class="buttons"> Explorador </button> 
-   </div>
    
         <script type="text/javascript" src="controller.js"></script>
     </body>

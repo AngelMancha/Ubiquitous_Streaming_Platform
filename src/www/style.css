@@ -90,10 +90,16 @@ ul li a {
     }
     p {
         font-size: 15px;
+        text-align: center;
+        margin: left 1px;
     }
     h1 {
-        font-size: 35px;
+        font-size: 30px;
         margin-top: 10px;
+        
+    }
+    .img {
+        height: 100px;
     }
 
   }
