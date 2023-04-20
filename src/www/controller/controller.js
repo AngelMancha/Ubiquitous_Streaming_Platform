@@ -96,6 +96,7 @@ adelanto.addEventListener("click", function() {
     socket.emit('adelanto_touch');
     console.log("EN TOUCH ADELANTE");
 });
+
 retraso.addEventListener("click", function() {
   socket.emit('retraso_touch');
   console.log("EN TOUCH RETRASO");
@@ -140,7 +141,7 @@ document.addEventListener('touchstart', function(event) {
   movimientoDetectado = false;
   // guardamos posiciones iniciales de los touch
   posicionesIniciales = Array.from(event.touches).map(touch => ({ x: touch.clientX, y: touch.clientY }));
-  console.log("1 toque detectado");
+
 });
 
 // si se mueven los tres dedos, comprobar que se mueva la distancia umbral

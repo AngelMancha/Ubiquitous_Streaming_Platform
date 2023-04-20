@@ -11,9 +11,27 @@ body {
     flex-basis:15%;
     font-size: 30px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    width: 300px;
+    margin: auto;
+    border: 1px solid #2d5683;
+    padding: 5px;
+    border-radius: 10px;
 }
+
+#lista-notas {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  #lista-notas li {
+    text-align: center;
+    margin: 10px 0;
+    color: #9cb2b6;
+  }
+
+
 .li {
-    border-color: white;
+    border-color: #693b7d;
 }
 /*video en el centro*/
 #video_container{
@@ -24,16 +42,61 @@ body {
 }
 
 #video {
-    flex-basis: 85%;
+    flex-basis: 75%;
 }
 
+.container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    margin: 10px;
+
+}
 
 #gallery{
     display:flex;
-    flex-wrap: wrap;
+    flex-direction: row;
 }
+
+#gallery > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+  }
 
 #gallery video{
     width: 500px;
-    padding: 50px;
+    padding: 30px;
 }
+
+
+h2 {
+    margin-top: 30px;
+    color: #9cb2b6;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+p {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 0;
+    color: #FFFF;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+.img {
+    display: block;
+    margin: auto;
+    margin-bottom: 20px;
+  }

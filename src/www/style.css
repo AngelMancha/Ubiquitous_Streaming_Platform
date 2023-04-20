@@ -4,8 +4,9 @@ body {
 
 h1 {
     margin-left:20px;
-    font-size: 50px;
+    font-size: 35px;
     font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
 }
 
 p {
@@ -13,17 +14,6 @@ p {
     font-size: 20px;
 
 }
-
-
-
-h2 {
-    margin: 0;
-    font-size: 30px;
-    font-family: Arial, Helvetica, sans-serif;
-    align-self: center;
-    color: #c75a70;
-}
-
 
 .container {
     display: flex;
@@ -66,14 +56,14 @@ ul {
 ul li {
     margin: 0;
     padding: 50px;
-    background-color: #c75a70;
+    background-color: #2d5683;
     text-align: center; /* Centra el contenido del elemento li */
     margin-bottom: 10px;
     border-radius: 30px;
 }
 
 ul li:hover {
-    background-color: #d77c7a;
+    background-color: #9cb2b6;
 }
   
 ul li a {

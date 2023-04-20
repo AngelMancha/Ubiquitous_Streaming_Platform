@@ -92,6 +92,7 @@ socket.on("connect", function(){
 
 
     socket.on('play_touch', function() {
+      console.log("Hola");
       video.play();
       console.log("PLAY VIS");
     });
@@ -204,6 +205,7 @@ function anadirnota(){
 let gallery = document.getElementById("gallery"); 
 let video_container = document.getElementById("video_container");
 const videos = document.querySelectorAll("#gallery video"); 
+const logo = document.getElementById("img");
 let clickedVideoSrc;
 videos.forEach(video_gallery => { 
   video_gallery.addEventListener("click", () => {
@@ -211,7 +213,7 @@ videos.forEach(video_gallery => {
    
     video.setAttribute("src", clickedVideoSrc);
     socket.emit("VIDEO_SELECTED", { src: clickedVideoSrc }); 
-    gallery.style.display = "none";
+    logo.style.height = "100px";
     video_container.style.display = "flex";
     
   });
