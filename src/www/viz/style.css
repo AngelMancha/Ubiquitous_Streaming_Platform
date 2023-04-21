@@ -31,7 +31,7 @@ body {
 
 
 .li {
-    border-color: #693b7d;
+    border-color: #2d5683;
 }
 /*video en el centro*/
 #video_container{
@@ -57,6 +57,18 @@ body {
 
 }
 
+
+
+@keyframes border-color-change {
+    0% {border-color: #5d9b9b;}
+    25% {border-color: #03C03C;}
+    50% {border-color: #efa94a;}
+    75% {border-color: #a18594;}
+    100% {border-color: #ea899a;}
+}
+
+
+
 #gallery{
     display:flex;
     flex-direction: row;
@@ -69,9 +81,22 @@ body {
     margin: 10px;
   }
 
+
+#gallery video:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s;
+    border: 1px solid #2d5683;
+    border-width: 3px;
+  }
+  
+  
+  
 #gallery video{
     width: 500px;
-    padding: 30px;
+    margin-top: 10px;
+    margin-left: 50px;
+    border-radius: 50px;
+    animation: border-color-change 5s infinite;
 }
 
 
@@ -89,7 +114,7 @@ p {
     font-size: 20px;
     font-weight: bold;
     text-align: center;
-    margin-top: 5px;
+    margin-top: 15px;
     margin-bottom: 0;
     color: #FFFF;
     font-family: Arial, Helvetica, sans-serif;

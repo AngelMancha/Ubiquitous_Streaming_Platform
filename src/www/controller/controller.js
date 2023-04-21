@@ -1,6 +1,7 @@
 const socket = io();
 let pause = false;
 let started = false;
+let like = false;
 //let touch = false;
 let accelerometer;
 let absOrientation;
@@ -12,9 +13,18 @@ const play_pause = document.getElementById("play-pause");
 const retraso = document.getElementById("retraso");
 const adelanto = document.getElementById("adelanto");
 const video_container = document.getElementById("video-container");
+const like_button = document.getElementById("like-button");
+const like_img = document.getElementById("like-img");
 
 
-
+like_button.addEventListener("click", function() {
+  like = !like;
+  if (like) {
+    like_img.src = "../media/corazon_lleno.png";
+  } else {
+    like_img.src = "../media/corazon_vacio.png";
+  }
+})
 console.log("started:", started);
 
 /* Deshabilitar el zoom en dispositivos móviles */
@@ -26,17 +36,11 @@ window.addEventListener('gesturestart', function(event) {
 
 async function toggleStart() {
   started = !started;
-  console.log("funcion started:", started);
   if (started) {
-    divElem.src = "../media/gesto.png";
-    if (accelerometer) accelerometer.start();
-    if (absOrientation) absOrientation.start();
-    buttons_touch.style.display = "none";
-  } else {
     divElem.src = "../media/tactil.png";
-    if (accelerometer) accelerometer.stop();
-    if (absOrientation) absOrientation.stop();
-    buttons_touch.style.display = "block";
+  } else {
+    divElem.src = "../media/gesto.png";
+
   }
 }
 

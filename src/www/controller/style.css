@@ -1,192 +1,210 @@
 html, body {
-    height: 100%;
-    width: 100%;
-    background: #1E1E1E;
-  }
-  
-  body {
-    margin: 0px;
-  }
-  
+  height: 100%;
+  width: 100%;
+  background: #1E1E1E;
+}
+
+body {
+  margin: 0px;
+}
+
 #msg-container{
 
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #2d5683;
-  font-size: 4em;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: white;
-  
+display: flex;
+align-items: center;
+justify-content: center;
+background-color: #2d5683;
+font-size: 4em;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+color: white;
+
 }
 
 
-#buttons-container, #buttons-container-touch {
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+#buttons-container, #buttons-container-touch, #like {
+margin: auto;
+display: flex;
+align-items: center;
+justify-content: space-between;
 }
 
 /*botones modernos y grandes con letra Heveltica*/
 #buttons-container button{
 
-  background-color: #2d5683;
-  color: #f6f6f7;
-  font-family: Helvetica;
-  font-size: 10em;
-  border: none;
-  border-radius: 10px;
-  margin: 50px;
-  border-radius: 50px;
-  
-  
+background-color: #2d5683;
+color: #f6f6f7;
+font-family: Helvetica;
+font-size: 10em;
+border: none;
+border-radius: 10px;
+margin: 50px;
+border-radius: 50px;
+
+
 }
 
 
 #mensaje {
-  display: block;
-  color: #f6f6f7;
-  font-family: Arial, Helvetica, sans-serif;
+display: block;
+color: #f6f6f7;
+font-family: Arial, Helvetica, sans-serif;
 }
 
 
 #buttons-container-touch button{
-  background-color: #2d5683;
-  color: #f6f6f7;
-  font-family: Helvetica;
-  font-size: 10em;
-  border: none;
-  margin: 50px;
-  padding: 10px;
-  margin-bottom: -100px;
-  border-radius: 50px;
+background-color: #2d5683;
+color: #f6f6f7;
+font-family: Helvetica;
+font-size: 10em;
+border: none;
+margin: 50px;
+padding: 10px;
+border-radius: 50px;
 
 }
 
 
+#like{
+
+align-items: center;
+justify-content: center;
+
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+color: white;
+}
+
+#like button{
+background-color: #2d5683;
+color: #f6f6f7;
+font-family: Helvetica;
+font-size: 10em;
+border: none;
+margin: 50px;
+padding: 10px;
+border-radius: 50px;
+}
+
 #video-container{
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
+margin: auto;
+display: flex;
+align-items: center;
+justify-content: center;
+
 }
 
 #video{
-  width: 95%;
-  margin-top: 20%;
-  margin-bottom: 20%;
-  height: 90%;
-  
-  align-items: center;
-  justify-content: center;
-  display: none;
+width: 95%;
+margin-top: 20%;
+margin-bottom: 20%;
+height: 90%;
+
+align-items: center;
+justify-content: center;
+display: none;
 
 }
 
 
 /*boton input file igual que el resto de botones y esté en el centro*/
 #file-input{
-  background-color: #2d5683;
-  color: #f6f6f7;
-  font-family: Helvetica;
-  font-size: 2.5em;
-  border: none;
-  border-radius: 10px;
+background-color: #2d5683;
+color: #f6f6f7;
+font-family: Helvetica;
+font-size: 2.5em;
+border: none;
+border-radius: 10px;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+display: flex;
+align-items: center;
+justify-content: center;
 
- 
+
 }
 
 
 /*ventana modal*/
 #modal-container{
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.5);
-  display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0,0,0,0.5);
+display: none;
 
 }
 
 #mensaje_box{
-  margin-top: 10%;
-  margin-left: 13%;
-  width:70%;
-  background-color: #2d5683;
-  padding: 50px;
-  font-size: 100px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 700;
-  color: #f6f6f7;
-  text-align: center;
-  justify-content: center;
-  border-radius: 50px;
+margin-top: 10%;
+margin-left: 13%;
+width:70%;
+background-color: #2d5683;
+padding: 50px;
+font-size: 100px;
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-weight: 700;
+color: #f6f6f7;
+text-align: center;
+justify-content: center;
+border-radius: 50px;
 }
 
 @media (min-width: 1000px) {
-  #modal-container {
-    display: block;
-  }
+#modal-container {
+  display: block;
+}
 
-  #file-input{
-    display: none;
-  }
+#file-input{
+  display: none;
+}
 
-  #video{
-    display: none;
-  }
+#video{
+  display: none;
+}
 
-  #video-container{
-    display: none;
-  }
+#video-container{
+  display: none;
+}
 
-  #buttons-container{
-    display: none;
-  }
+#buttons-container{
+  display: none;
+}
 
-  #msg-container{
-    display: none;
-  }
+#msg-container{
+  display: none;
+}
 }
 
 
 @media (max-width: 1000px) {
-  #buttons-container button{
-    height: 50%;
-    width: 20%;
-    padding-top: 50px;
-    padding-bottom: 50px;
-  
-  }
+#buttons-container button{
+  height: 50%;
+  width: 20%;
+  padding-top: 50px;
+  padding-bottom: 50px;
 
-  #buttons-container button img {
-    height: 50%;
-    width: 50%;
-    
-  }
-
-  #file-input{
-    margin-bottom: 35%;
-    border-radius: 30;
-    padding: 50px;
-    margin-left: 12%;
-    width: 75%;
-  }
-
-  #msg-container{
-    margin-bottom: 50%;
-    padding: 40px;
-    width: 80%;
-    margin-left: 5%;
-    border-radius: 10px;
-  }
 }
 
+#buttons-container button img {
+  height: 50%;
+  width: 50%;
+  
+}
+
+#file-input{
+  margin-bottom: 35%;
+  border-radius: 30;
+  padding: 50px;
+  margin-left: 12%;
+  width: 75%;
+}
+
+#msg-container{
+  margin-bottom: 50%;
+  padding: 40px;
+  width: 80%;
+  margin-left: 5%;
+  border-radius: 10px;
+}
+}
