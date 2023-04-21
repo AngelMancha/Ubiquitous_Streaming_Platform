@@ -2,7 +2,7 @@ const socket = io();
 let pause = false;
 let started = false;
 let like = false;
-//let touch = false;
+
 let accelerometer;
 let absOrientation;
 
@@ -64,7 +64,6 @@ if ('AbsoluteOrientationSensor' in window) {
       socket.emit("ORIENTATION_DATA", { roll: angles.roll, yaw: angles.yaw, pitch: angles.pitch});
       
     };
-
 
   } catch (err) {
     console.log(err);
