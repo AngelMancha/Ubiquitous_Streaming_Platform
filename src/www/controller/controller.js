@@ -36,11 +36,17 @@ window.addEventListener('gesturestart', function(event) {
 
 async function toggleStart() {
   started = !started;
+  console.log("funcion started:", started);
   if (started) {
-    divElem.src = "../media/tactil.png";
-  } else {
     divElem.src = "../media/gesto.png";
-
+    if (accelerometer) accelerometer.start();
+    if (absOrientation) absOrientation.start();
+    buttons_touch.style.display = "none";
+  } else {
+    divElem.src = "../media/tactil.png";
+    if (accelerometer) accelerometer.stop();
+    if (absOrientation) absOrientation.stop();
+    buttons_touch.style.display = "block";
   }
 }
 
