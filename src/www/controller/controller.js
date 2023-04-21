@@ -1,5 +1,5 @@
 const socket = io();
-let pause = false;
+let pause = true;
 let started = false;
 let like = false;
 
@@ -87,22 +87,19 @@ function toEulerRollPitchYaw(q) {
   return { roll, pitch, yaw };
 }
 
-video.addEventListener('play', function() {
-  pause = false;
-});
-video.addEventListener('pause', function() {
-  pause = true;
-});
+
 
 play_pause.addEventListener("click", function() {
   if (pause === true) {
     socket.emit('play_touch');
     play_img.src = "../media/playy.png";
     console.log("EN TOUCH PLAY");
+    pause = false;
   } else {
     socket.emit('pause_touch');
     play_img.src = "../media/pause.png";
     console.log("EN TOUCH PAUSE");
+    pause = true;
   }
 });
 adelanto.addEventListener("click", function() {
