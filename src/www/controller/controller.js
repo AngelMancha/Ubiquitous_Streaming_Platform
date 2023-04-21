@@ -15,6 +15,7 @@ const adelanto = document.getElementById("adelanto");
 const video_container = document.getElementById("video-container");
 const like_button = document.getElementById("like-button");
 const like_img = document.getElementById("like-img");
+const play_img = document.getElementById("play-img");
 
 
 like_button.addEventListener("click", function() {
@@ -27,7 +28,7 @@ like_button.addEventListener("click", function() {
 })
 console.log("started:", started);
 
-/* Deshabilitar el zoom en dispositivos móviles */
+/* Deshabilitar el zoom en dispositivos móvilesPLAY */
 window.addEventListener('gesturestart', function(event) {
   event.preventDefault();
 });
@@ -97,9 +98,11 @@ video.addEventListener('pause', function() {
 play_pause.addEventListener("click", function() {
   if (pause === true) {
     socket.emit('play_touch');
+    play_img.src = "../media/playy.png";
     console.log("EN TOUCH PLAY");
   } else {
     socket.emit('pause_touch');
+    play_img.src = "../media/pause.png";
     console.log("EN TOUCH PAUSE");
   }
 });
