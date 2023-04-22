@@ -16,6 +16,7 @@ const video_container = document.getElementById("video-container");
 const like_button = document.getElementById("like-button");
 const like_img = document.getElementById("like-img");
 const play_img = document.getElementById("play-img");
+const modal_mssg = document.getElementById("modal-container1");
 
 
 like_button.addEventListener("click", function() {
@@ -122,6 +123,7 @@ socket.on("connect", function(){
   socket.on("VIDEO_SELECTED", function(data){
     video.src = data.src;
     video.style.display = "block";
+    modal_mssg.style.display = "none";
   });
   // cuando el video en la página de "viz" se está reproduciendo
   socket.on('play', function() {
