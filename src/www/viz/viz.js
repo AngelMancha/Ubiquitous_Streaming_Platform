@@ -213,6 +213,8 @@ videos.forEach(video_gallery => {
    
     video.setAttribute("src", clickedVideoSrc);
     socket.emit("VIDEO_SELECTED", { src: clickedVideoSrc }); 
+    //vaciar lista de notas
+    listaNotas.innerHTML = "";
     logo.style.height = "100px";
     video_container.style.display = "flex";
     

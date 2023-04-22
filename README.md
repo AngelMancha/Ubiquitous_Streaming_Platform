@@ -53,6 +53,8 @@ Se puede observar cómo a la derecha aparece un apartado en el que aparecerán a
 
 **8.** Para tomar anotaciones de las dudas de los alumnos en el minuto y segundo exacto: **Deslizar con 3 dedos** sobre la pantalla del controlador hacia abajo.
 
+![notas](src/www/media/nota_img.png)
+
 **9.** Para cambiar de video, basta con deslizar la ventana del visualizador hacia abajo y seleccionar otro video. Este se actualizará en el controlador.
 
 ![visualizador](src/www/media/viz2.png)
