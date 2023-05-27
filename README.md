@@ -19,9 +19,11 @@ Para mayor comodidad del profesor, también se ha incluido un botón para desact
 
 ## Uso de la aplicación
 **1.** Ir a la carpeta raiz y lanzar el servidor
-- *cd src*
-- *node index.js*
 
+```bash
+  cd src
+  node idnex.js
+```
 **2.** Conectarse a *localhost 3000*
 
 **3.** Seleccionar adecuadamente cómo queremos que actúe el dispositivo actual (controlador o visualizador)
