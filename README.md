@@ -1,7 +1,7 @@
 
 ### Ruth Navarro Carrasco, Alicia Benítez Rogero y Ángel José Mancha Núñez
 
-# Magic Box
+# Movie Box
 
 Este proyecto consiste en una aplicación de reproducción de videos que se puede controlar mediante gestos con el móvil. Está especialmente diseñada para ser utilizada en un ambiente educativo, en donde el profesor utilizará la parte controladora de la app desde su dispositivo móvil para interactuar con el video que se estará mostrando en otro dispositivo, como un proyector.
 
